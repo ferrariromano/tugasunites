@@ -1,25 +1,57 @@
-print('=' * 25)
-print('Operasi Matematika')
-print(' 1. Jumlah \t [+]')
-print(' 2. Kurang \t [-]')
-print(' 3. Kali \t [*]')
-print(' 4. Bagi \t [/]')
-print('=' * 25)
-operasi = input('Pilih operasi (1/2/3/4): ')
-bilangan_1 = eval(input('Masukkan bilangan pertama: '))
-bilangan_2 = eval(input('Masukkan bilangan kedua: '))
-print('=' * 25)
-if operasi == '1':
-    hasil = bilangan_1 + bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} + {bilangan_2} = {hasil}')
-elif operasi == '2':
-    hasil = bilangan_1 - bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} - {bilangan_2} = {hasil}')
-elif operasi == '3':
-    hasil = bilangan_1 * bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} * {bilangan_2} = {hasil}')
-elif operasi == '4':
-    hasil = bilangan_1 / bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} / {bilangan_2} = {hasil}')
-else:
-    print('Tidak valid')
+# def nilai_maksimal(deret_bilangan):
+#     nilai_terbesar = deret_bilangan[0]
+    
+#     for nilai in deret_bilangan:
+#         if nilai > nilai_terbesar:
+#             nilai_terbesar = nilai
+#     return nilai_terbesar
+
+# def nilai_minimal(deret_bilangan):
+#     nilai_terkecil = deret_bilangan[0]
+#     for nilai in deret_bilangan:
+#         if nilai < nilai_terkecil:
+#             nilai_terkecil = nilai
+#     return nilai_terkecil
+
+# a = [3, 20, 100, -35, 50]
+# print(a)
+# print('Nilai terbesar:', nilai_maksimal(a))
+# print('Nilai terkecil:', nilai_minimal(a))
+
+
+import unittest
+
+def nilai_maksimal(deret_bilangan):
+    nilai_terbesar = deret_bilangan[0]
+    
+    for nilai in deret_bilangan:
+        if nilai > nilai_terbesar:
+            nilai_terbesar = nilai
+    return nilai_terbesar
+
+def nilai_minimal(deret_bilangan):
+    nilai_terkecil = deret_bilangan[0]
+    for nilai in deret_bilangan:
+        if nilai < nilai_terkecil:
+            nilai_terkecil = nilai
+    return nilai_terkecil
+
+# Menampilkan nilai terbesar dan terkecil sebelum pengujian
+a = [3, 20, 100, -35, 50]
+print('Deret Bilangan:', a)
+print('Nilai terbesar:', nilai_maksimal(a))
+print('Nilai terkecil:', nilai_minimal(a))
+
+class TestNilaiMaksimalMinimal(unittest.TestCase):
+    def test_nilai_maksimal(self):
+        self.assertEqual(nilai_maksimal([3, 20, 100, -35, 50]), 100)
+        self.assertEqual(nilai_maksimal([-5, -10, -20, -1, -2]), -1)
+        self.assertEqual(nilai_maksimal([0]), 0)
+
+    def test_nilai_minimal(self):
+        self.assertEqual(nilai_minimal([3, 20, 100, -35, 50]), -35)
+        self.assertEqual(nilai_minimal([-5, -10, -20, -1, -2]), -20)
+        self.assertEqual(nilai_minimal([0]), 0)
+
+if __name__ == '__main__':
+    unittest.main()
