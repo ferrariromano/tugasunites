@@ -1,72 +1,74 @@
-#Program Asli 
-print('=' * 25)
-print('Operasi Matematika')
-print(' 1. Jumlah \t [+]')
-print(' 2. Kurang \t [-]')
-print(' 3. Kali \t [*]')
-print(' 4. Bagi \t [/]')
-print('=' * 25)
-operasi = input('Pilih operasi (1/2/3/4): ')
-bilangan_1 = eval(input('Masukkan bilangan pertama: '))
-bilangan_2 = eval(input('Masukkan bilangan kedua: '))
-print('=' * 25)
-if operasi == '1':
-    hasil = bilangan_1 + bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} + {bilangan_2} = {hasil}')
-elif operasi == '2':
-    hasil = bilangan_1 - bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} - {bilangan_2} = {hasil}')
-elif operasi == '3':
-    hasil = bilangan_1 * bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} * {bilangan_2} = {hasil}')
-elif operasi == '4':
-    hasil = bilangan_1 / bilangan_2
-    print(f'Hasil operasi dari {bilangan_1} / {bilangan_2} = {hasil}')
-else:
-    print('Tidak valid')
+# def tambah(a, b):
+#     return a + b
 
-#Program Unitest
-# import unittest
-# def operasi_matematika(operasi, bilangan_1, bilangan_2):
-#     if operasi == '1':
-#         hasil = bilangan_1 + bilangan_2
-#         return f'Hasil operasi dari {bilangan_1} + {bilangan_2} = {hasil}'
-#     elif operasi == '2':
-#         hasil = bilangan_1 - bilangan_2
-#         return f'Hasil operasi dari {bilangan_1} - {bilangan_2} = {hasil}'
-#     elif operasi == '3':
-#         hasil = bilangan_1 * bilangan_2
-#         return f'Hasil operasi dari {bilangan_1} * {bilangan_2} = {hasil}'
-#     elif operasi == '4':
-#         if bilangan_2 == 0:
-#             return 'Tidak bisa membagi dengan nol.'
-#         hasil = bilangan_1 / bilangan_2
-#         return f'Hasil operasi dari {bilangan_1} / {bilangan_2} = {hasil}'
+# def kurang(a, b):
+#     return a - b
+
+# def kali(a, b):
+#     return a * b
+
+# def bagi(a, b):
+#     if b != 0:
+#         return a / b
 #     else:
-#         return 'Operasi tidak valid'
+#         return "Pembagian oleh nol tidak diizinkan"
 
-# class TestOperasiMatematika(unittest.TestCase):
-#     def test_penjumlahan(self):
-#         self.assertEqual(operasi_matematika('1', 3, 2), 'Hasil operasi dari 3 + 2 = 5')
-#         print(operasi_matematika('1', 3, 2))
+# def pangkat(a, b):
+#     return a ** b
 
-#     def test_pengurangan(self):
-#         self.assertEqual(operasi_matematika('2', 8, 4), 'Hasil operasi dari 8 - 4 = 4')
-#         print(operasi_matematika('2', 8, 4))
+# # Contoh penggunaan fungsi
+# print("Hasil Penambahan: ", tambah(2, 3))
+# print("Hasil Pengurangan: ", kurang(5, 3))
+# print("Hasil Perkalian: ", kali(2, 3))
+# print("Hasil Pembagian: ", bagi(6, 2))
+# print("Hasil Pemangkatan: ", pangkat(2, 3))
 
-#     def test_perkalian(self):
-#         self.assertEqual(operasi_matematika('3', 5, 6), 'Hasil operasi dari 5 * 6 = 30')
-#         print(operasi_matematika('3', 5, 6))
+#unitest 
+import unittest
 
-#     def test_pembagian(self):
-#         self.assertEqual(operasi_matematika('4', 10, 2), 'Hasil operasi dari 10 / 2 = 5')
-#         self.assertEqual(operasi_matematika('4', 5, 0), 'Tidak bisa membagi dengan nol.')
-#         print(operasi_matematika('4', 10, 2))
-#         print(operasi_matematika('4', 5, 0))
+def tambah(a, b):
+    return a + b
 
-#     def test_operasi_tidak_valid(self):
-#         self.assertEqual(operasi_matematika('5', 2, 3), 'Operasi tidak valid')
-#         print(operasi_matematika('5', 2, 3))
+def kurang(a, b):
+    return a - b
 
-# if __name__ == '__main__':
-#     unittest.main()
+def kali(a, b):
+    return a * b
+
+def bagi(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Pembagian oleh nol tidak diizinkan"
+
+def pangkat(a, b):
+    return a ** b
+
+class TestKalkulator(unittest.TestCase):
+    # Metode pengujian untuk fungsi tambah
+    def test_tambah(self):
+        self.assertEqual(tambah(2, 3), 5)
+        self.assertEqual(tambah(-2, 3), 1)
+
+    # Metode pengujian untuk fungsi kurang
+    def test_kurang(self):
+        self.assertEqual(kurang(5, 3), 2)
+        self.assertEqual(kurang(3, 5), -2)
+
+    # Metode pengujian untuk fungsi kali
+    def test_kali(self):
+        self.assertEqual(kali(2, 3), 6)
+        self.assertEqual(kali(-2, 3), -6)
+
+    # Metode pengujian untuk fungsi bagi
+    def test_bagi(self):
+        self.assertEqual(bagi(6, 2), 3)
+        self.assertEqual(bagi(5, 0), "Pembagian oleh nol tidak diizinkan")
+
+    # Metode pengujian untuk fungsi pangkat
+    def test_pangkat(self):
+        self.assertEqual(pangkat(2, 3), 8)
+        self.assertEqual(pangkat(3, 2), 9)
+
+if __name__ == '__main__':
+    unittest.main()
